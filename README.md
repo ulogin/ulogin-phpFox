@@ -19,3 +19,4 @@ uLogin — это инструмент, который позволяет пол
 	   Для этого в AdminCP->Settings->ManageSettings->ServerSettings->CSRF Protection Level выставить в low.
 
 == Changelog ==
+  - Добавлена загрузка профильных фото.
