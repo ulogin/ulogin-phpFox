@@ -14,7 +14,7 @@ uLogin — это инструмент, который позволяет пол
 
 == Installation ==
 	1) Скопировать все файлы и папки находящиеся в папке /upload в архиве в корень phpFox.
-	2) Импортировать продукт uLogin административной панеле(AdminCP).
+	2) Импортировать продукт uLogin в административной панели(AdminCP).
   	3) Cнизить уровень безопасности на low для получения token от ulogin.ru. 
 	   Для этого в AdminCP->Settings->ManageSettings->ServerSettings->CSRF Protection Level выставить в low.
 
