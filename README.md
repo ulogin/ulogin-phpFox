@@ -2,7 +2,7 @@
 Donate link: http://ulogin.ru/
 Tags: ulogin, login, social, authorization
 Requires at least: 2.x.x
-Tested up to: 3.x.x
+Tested up to: 3.2.x
 Stable tag: 1.0
 License: GPL3
 Форма авторизации uLogin через социальные сети. Улучшенный аналог loginza.
