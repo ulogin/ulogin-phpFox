@@ -1,0 +1,269 @@
+/* 
+    Document   : account
+    Created on : 06.06.2012, 19:06:41
+    Author     : office-3
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.form_wrap {
+    margin-top: 5px;
+    padding: 5px 0 5px 0;
+    width: 200px;
+}
+
+.check_input {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.check_label {
+    margin-left: 5px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.msg {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.msg {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.big_provider {
+    background: url(//ulogin.ru/img/panel.png?version=1.5.00);
+    width: 32px;
+    height: 32px;
+    float: left;
+    margin-right: 6px;
+}
+
+.small_provider {
+    background: url(//ulogin.ru/img/small.png?version=1.5.00);
+    width: 16px;
+    height: 16px;
+}
+
+.vkontakte_big {
+    background-position: 0 -38px;
+}
+
+.vkontakte_small {
+    background-position: 0 -19px;
+}
+
+.odnoklassniki_big {
+    background-position: 0 -73px;
+}
+
+.odnoklassniki_small {
+    background-position: 0 -42px;
+}
+
+.mailru_big {
+    background-position: 0 -108px;
+}
+
+.mailru_small {
+    background-position: 0 -65px;
+}
+
+.facebook_big {
+    background-position: 0 -143px;
+}
+
+.facebook_small {
+    background-position: 0 -88px;
+}
+
+.twitter_big {
+    background-position: 0 -178px;
+}
+
+.twitter_small {
+    background-position: 0 -111px;
+}
+
+.google_big {
+    background-position: 0 -213px;
+}
+
+.google_small {
+    background-position: 0 -134px;
+}
+
+.yandex_big {
+    background-position: 0 -248px;
+}
+
+.yandex_small {
+    background-position: 0 -157px;
+}
+
+.livejournal_big {
+    background-position: 0 -283px;
+}
+
+.livejournal_small {
+    background-position: 0 -180px;
+}
+
+.openid_big {
+    background-position: 0 -318px;
+}
+
+.openid_small {
+    background-position: 0 -203px;
+}
+
+.guest_big {
+    background-position: 0 -353px;
+}
+
+.guest_small {
+    background-position: 0 -226px;
+}
+
+.flickr_big {
+    background-position: 0 -388px;
+}
+
+.flickr_small {
+    background-position: 0 -249px;
+}
+
+.lastfm_big {
+    background-position: 0 -423px;
+}
+
+.lastfm_small {
+    background-position: 0 -272px;
+}
+
+.linkedin_big {
+    background-position: 0 -458px;
+}
+
+.linkedin_small {
+    background-position: 0 -295px;
+}
+
+.liveid_big {
+    background-position: 0 -493px;
+}
+
+.liveid_small {
+    background-position: 0 -318px;
+}
+
+.soundcloud_big {
+    background-position: 0 -528px;
+}
+
+.soundcloud_small {
+    background-position: 0 -341px;
+}
+
+.steam_big {
+    background-position: 0 -563px;
+}
+
+.steam_small {
+    background-position: 0 -364px;
+}
+
+.uid_big {
+    background-position: 0 -598px;
+}
+
+.uid_small {
+    background-position: 0 -387px;
+}
+
+.webmoney_big {
+    background-position: 0 -633px;
+}
+
+.webmoney_small {
+    background-position: 0 -410px;
+}
+
+.youtube_big {
+    background-position: 0 -668px;
+}
+
+.youtube_small {
+    background-position: 0 -433px;
+}
+
+.foursquare_big {
+    background-position: 0 -703px;
+}
+
+.foursquare_small {
+    background-position: 0 -456px;
+}
+
+.tumblr_big {
+    background-position: 0 -738px;
+}
+
+.tumblr_small {
+    background-position: 0 -479px;
+}
+
+.googleplus_big {
+    background-position: 0 -773px;
+}
+
+.googleplus_small {
+    background-position: 0 -502px;
+}
+
+.dudu_big {
+    background-position: 0 -808px;
+}
+
+.dudu_small {
+    background-position: 0 -525px;
+}
+
+.vimeo_big {
+    background-position: 0 -843px;
+}
+
+.vimeo_small {
+    background-position: 0 -548px;
+}
+
+.instagram_big {
+    background-position: 0 -878px;
+}
+
+.instagram_small {
+    background-position: 0 -571px;
+}
+
+.wargaming_big {
+    background-position: 0 -913px;
+}
+
+.wargaming_small {
+    background-position: 0 -594px;
+}
+
+.transparent {
+    filter: "alpha(opacity=55) progid:DXImageTransform.Microsoft.AlphaImageLoader(src=transparent.png, sizingMethod='crop'";
+    opacity: .55;
+}

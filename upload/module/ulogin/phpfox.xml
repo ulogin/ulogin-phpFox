@@ -1,0 +1,53 @@
+<module>
+	<data>
+		<module_id>ulogin</module_id>
+		<product_id>uLogin</product_id>
+		<is_core>0</is_core>
+		<is_active>1</is_active>
+		<is_menu>1</is_menu>
+		<menu><![CDATA[a:1:{s:24:"ulogin.admin_menu_ulogin";a:1:{s:3:"url";a:1:{i:0;s:6:"ulogin";}}}]]></menu>
+		<phrase_var_name>module_ulogin</phrase_var_name>
+	</data>
+	<setting_groups>
+		<name module_id="ulogin" version_id="3.7.2" var_name="setting_group_uloginsettings">uloginsettings</name>
+	</setting_groups>
+	<settings>
+		<setting group="uloginsettings" module_id="ulogin" is_hidden="0" type="string" var_name="uloginid1" phrase_var_name="setting_uloginid1" ordering="1" version_id="3.7.2"></setting>
+		<setting group="uloginsettings" module_id="ulogin" is_hidden="0" type="string" var_name="uloginid2" phrase_var_name="setting_uloginid2" ordering="2" version_id="3.7.2"></setting>
+	</settings>
+	<blocks>
+		<block type_id="0" m_connection="ulogin.index" module_id="ulogin" component="panel" location="6" is_active="1" ordering="1" disallow_access="" can_move="0">
+			<title>uLogin Block</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="ulogin.account" module_id="ulogin" component="uloginpanel" location="4" is_active="1" ordering="1" disallow_access="a:1:{i:0;s:1:&quot;5&quot;;}" can_move="0">
+			<title>uLogin panel</title>
+			<source_code />
+			<source_parsed />
+		</block>
+	</blocks>
+	<plugins>
+		<plugin module_id="ulogin" product_id="uLogin" call_name="user.template.login_header_set_var" title="uLogin panel"><![CDATA[if(Phpfox::isModule('ulogin')){
+   echo phpfox::getService('ulogin.panel')->showPanel();
+}]]></plugin>
+		<plugin module_id="ulogin" product_id="uLogin" call_name="user.template_controller_setting" title="uLogin account setting"><![CDATA[$acc_url = Phpfox::getLib('url')->makeUrl('ulogin',array('account'), false);
+echo '<div class="table"><div class = "table_left">uLogin:</div><div class= "table_right"><a href="'.$acc_url.'">Account settings</a></div></div>';]]></plugin>
+	</plugins>
+	<components>
+		<component module_id="ulogin" component="attach.ulogin" m_connection="attach.ulogin" module="ulogin" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="ulogin" component="ulogin.account.settings" m_connection="ulogin.account" module="ulogin" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="ulogin" component="uloginpanel" m_connection="" module="ulogin" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="ulogin" component="ulogin.token" m_connection="ulogin.token" module="ulogin" is_controller="1" is_block="0" is_active="1" />
+	</components>
+	<phrases>
+		<phrase module_id="ulogin" version_id="2.0.5" var_name="admin_menu_menu1" added="1337335996">Menu1</phrase>
+		<phrase module_id="ulogin" version_id="2.0.5" var_name="module_ulogin" added="1337335996">uLogin widget module</phrase>
+		<phrase module_id="ulogin" version_id="3.0.0" var_name="admin_menu_ulogin" added="1338969746">uLogin</phrase>
+		<phrase module_id="ulogin" version_id="3.7.2" var_name="setting_group_uloginsettings" added="1430397381"><![CDATA[<title>ulogin_settings</title><info>uLogin Settings Group</info>]]></phrase>
+		<phrase module_id="ulogin" version_id="3.7.2" var_name="setting_uloginid1" added="1430397681"><![CDATA[<title>uLogin ID general form</title><info>uLogin ID General Form For Any Hook. Empty
+field - the default widget</info>]]></phrase>
+		<phrase module_id="ulogin" version_id="3.7.2" var_name="setting_uloginid2" added="1430397750"><![CDATA[<title>uLogin ID Synchronization Form</title><info>uLogin ID Synchronization Form For Any Hook. Empty
+field - the default widget</info>]]></phrase>
+	</phrases>
+</module>
