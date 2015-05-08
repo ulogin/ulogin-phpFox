@@ -53,7 +53,7 @@ class uLogin_Service_uLogin extends Phpfox_Service {
 		{
 			eval($Plugin);
 		}
-		$user_data = $this->database()->select('password, password_salt, user_name')->from(Phpfox::getT('user'))->where('user_id = '.$user_id)->execute('getRow');
+		$user_data = $this->database()->select('password, password_salt, user_name,birthday,user_image,gender')->from(Phpfox::getT('user'))->where('user_id = '.$user_id)->execute('getRow');
 		if (!isset($user_data['password']))
 		{
 			$this->_error = 'Unknown error';
@@ -63,6 +63,31 @@ class uLogin_Service_uLogin extends Phpfox_Service {
 		Phpfox::setCookie('user_id', $user_id, 0);
 		Phpfox::setCookie('user_hash', $passwordHash, 0);
 		$this->database()->update(Phpfox::getT('user'), array('last_login' => PHPFOX_TIME), 'user_id = '.$user_id);
+
+		if(!empty($u_user['sex']) && isset($u_user['sex'])) {
+			$gender = $u_user['sex'] == 1 ? '2' : '1';
+			$this->database()->update(Phpfox::getT('user'), array('gender' => $gender), 'user_id = '.$user_id);
+		}
+
+		if (!empty($u_user['bdate']) && isset($u_user['bdate'])) {
+			$bdate = explode('.', $u_user['bdate']);
+			$day = intval($bdate[0]) < 10 ? '0'.intval($bdate[0]) : $bdate[0];
+			$month = intval($bdate[1]) < 10 ? '0'.intval($bdate[1]) : $bdate[1];;
+			$year = $bdate[2];
+			$birthday = $month.$day.$year;
+			$this->database()->update(Phpfox::getT('user'), array('birthday' => $birthday), 'user_id = '.$user_id);
+		}
+
+		if(empty($user_data['user_image'])) {
+			if (isset($u_user['photo'])) $u_user['photo'] = $u_user['photo'] === "https://ulogin.ru/img/photo.png" ? '' : $u_user['photo'];
+			if (isset($u_user['photo_big'])) $u_user['photo'] = $u_user['photo_big'] === "https://ulogin.ru/img/photo_big.png" ? '' : $u_user['photo_big'];
+			$photo_url = (isset($u_user['photo_big']) and !empty($u_user['photo_big'])) ? $u_user['photo_big'] : (isset($u_user['photo']) and !empty($u_user['photo'])) ? $u_user['photo'] : '';
+			if ($photo = $this->_uploadPhoto($photo_url, $user_id))
+			{
+				$this->database()->update(Phpfox::getT('user'), array('user_image' => $photo), 'user_id = '.$user_id);
+			}
+		}
+
 		$this->database()->insert(Phpfox::getT('user_ip'), array('user_id' => $user_id, 'type_id' => 'login', 'ip_address' => Phpfox::getIp(), 'time_stamp' => PHPFOX_TIME));
 		if ($Plugin = Phpfox_Plugin::get('user.service_auth_login__cookie_end'))
 		{
@@ -284,7 +309,10 @@ class uLogin_Service_uLogin extends Phpfox_Service {
 				try
 				{
 					$this->database()->insert(Phpfox::getT('user_activity'), array('user_id' => $uid));
-					$this->database()->insert(Phpfox::getT('user_field'), array('user_id' => $uid));
+					$this->database()->insert(Phpfox::getT('user_field'), array(
+						'user_id' => $uid,
+						'city_location' => $u_user['city']
+					));
 					$this->database()->insert(Phpfox::getT('user_space'), array('user_id' => $uid));
 					$this->database()->insert(Phpfox::getT('user_count'), array('user_id' => $uid));
 				} catch (Exception $e)
@@ -292,7 +320,10 @@ class uLogin_Service_uLogin extends Phpfox_Service {
 					$this->_error = 'Database error';
 				}
 				$this->database()->insert(Phpfox::getT('ulogin_user'), array('uid' => $uid, 'identity' => $u_user['identity'], 'network' => $u_user['network']));
-				$photo_url = $u_user['photo_big'] == 'http://ulogin.ru/img/photo_big.png' ? $u_user['photo'] : $u_user['photo_big'];
+
+				if (isset($u_user['photo'])) $u_user['photo'] = $u_user['photo'] === "https://ulogin.ru/img/photo.png" ? '' : $u_user['photo'];
+				if (isset($u_user['photo_big'])) $u_user['photo'] = $u_user['photo_big'] === "https://ulogin.ru/img/photo_big.png" ? '' : $u_user['photo_big'];
+				$photo_url = (isset($u_user['photo_big']) and !empty($u_user['photo_big'])) ? $u_user['photo_big'] : (isset($u_user['photo']) and !empty($u_user['photo'])) ? $u_user['photo'] : '';
 				if ($photo = $this->_uploadPhoto($photo_url, $uid))
 				{
 					$this->database()->update(Phpfox::getT('user'), array('user_image' => $photo), 'user_id = '.$uid);
@@ -303,17 +334,6 @@ class uLogin_Service_uLogin extends Phpfox_Service {
 				$this->_error = 'Internal error';
 			}
 			return $uid;
-//			var_dump($uid);
-//			exit;
-//			//send email refactoring
-//			if (XenForo_Application::getOptions()->uLoginEmail == 1)
-//			{
-//				$this->sendEmail($user);
-//			}
-//			if (isset($u_user['photo'])) $u_user['photo'] = $u_user['photo'] === "https://ulogin.ru/img/photo.png" ? '' : $u_user['photo'];
-//			if (isset($u_user['photo_big'])) $u_user['photo_big'] = $u_user['photo_big'] === "https://ulogin.ru/img/photo_big.png" ? '' : $u_user['photo_big'];
-//			$this->_uploadAvatar((isset($u_user['photo_big']) and !empty($u_user['photo_big'])) ? $u_user['photo_big'] : ((isset($u_user['photo']) and !empty($u_user['photo'])) ? $u_user['photo'] : ''));
-//			return $user['user_id'];
 		}
 		else
 		{ // существует пользователь с таким email или это текущий пользователь

@@ -16,7 +16,7 @@
 			<version>2.0.0</version>
 			<install_code><![CDATA[$db = Phpfox::getLib('database');
 $prefix = Phpfox::getParam(array('db', 'prefix'));
-$query = 'CREATE TABLE IF NOT EXISTS '.$prefix.'ulogin_user (`id` int(10) unsigned NOT NULL auto_increment,`uid` int(10) NOT NULL,`identity` text,`network` text, PRIMARY KEY (`id`))ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci';
+$query = 'CREATE TABLE IF NOT EXISTS '.$prefix.'ulogin_user (`id` int(10) unsigned NOT NULL auto_increment,`uid` int(10) NOT NULL,`identity` text, `network` text, PRIMARY KEY (`id`))ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci';
 $db->query($query);]]></install_code>
 			<uninstall_code><![CDATA[$db = Phpfox::getLib('database');
 $prefix = Phpfox::getParam(array('db', 'prefix'));
