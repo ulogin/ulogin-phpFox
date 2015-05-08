@@ -17,8 +17,7 @@ License: GNU General Public License, version 2
   - Импортировать продукт uLogin в административной панели(AdminCP->Extensions->Import Products).
   - Модуль заработает сразу после импортирования с настройками по умолчанию.
 
-Теперь снижать уровень безопасности на low в
-  AdminCP->Settings->ManageSettings->ServerSettings->CSRF Protection Level необязательно.
+Теперь снижать уровень безопасности на low в **AdminCP - Settings - Manage Settings - Server Settings - CSRF Protection Level** необязательно.
 
 Более детальную информацию смотрите на сайте https://ulogin.ru/help.php
 
